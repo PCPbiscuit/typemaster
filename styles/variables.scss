@@ -1,0 +1,99 @@
+$white: #fff !default;
+$gray-50: #fbfcfd !default;
+$gray-100: #f8f9fa !default;
+$gray-200: #e9ecef !default;
+$gray-300: #dee2e6 !default;
+$gray-400: #ced4da !default;
+$gray-500: #adb5bd !default;
+$gray-600: #6c757d !default;
+$gray-700: #495057 !default;
+$gray-800: #343a40 !default;
+$gray-900: #212529 !default;
+$black: #000 !default;
+
+$orange: #f16718 !default;
+$orange-secondary: #ff9b62 !default;
+$blue: #162542 !default;
+$blue-secondary: #7b8bad !default;
+$gray: #e8eff2 !default;
+
+$btn-styles: (
+  '-secondary': $gray,
+  '-primary': $orange,
+);
+
+@mixin font-by-ratio($n) {
+  @each $breakpoint-name, $breakpoint-width in $breakpoints {
+    $ratio: map-get($breakpoints-typography-ratio, $breakpoint-name);
+    @media (min-width: $breakpoint-width) {
+      font-size: font-ratio($ratio, $n) * 1rem;
+    }
+  }
+}
+
+@function font-ratio($ratio, $n) {
+  $r: 1 !default;
+  @while $n > 0 {
+    $r: $r * $ratio;
+    $n: $n - 1;
+  }
+  @while $n < 0 {
+    $r: $r / $ratio;
+    $n: $n + 1;
+  }
+  @return $r;
+}
+
+$breakpoints-typography-base: (
+  xs: 14px,
+  sm: 14px,
+  md: 14px,
+  lg: 16px,
+  xl: 17px,
+  xxl: 17px,
+) !default;
+
+$breakpoints-typography-ratio: (
+  xs: 7/6,
+  sm: 6/5,
+  md: 6/5,
+  lg: 6/5,
+  xl: 5/4,
+  xxl: 4/3,
+) !default;
+
+$gutter: 1rem !default;
+$columns: 12 !default;
+
+$breakpoints: (
+  xs: 0,
+  sm: 576px,
+  md: 768px,
+  lg: 992px,
+  xl: 1200px,
+  xxl: 1440px,
+) !default;
+
+$container-widths: (
+  md: 720px,
+  lg: 960px,
+  xl: 1140px,
+  xxl: 1380px,
+) !default;
+
+$contrast-color-light: $gray-100 !default;
+$contrast-color-dark: $gray-900 !default;
+
+@function contrast-color($color) {
+  $r: red($color);
+  $g: green($color);
+  $b: blue($color);
+
+  $yiq: (($r * 299) + ($g * 587) + ($b * 114)) / 1000;
+
+  @if ($yiq >= 150) {
+    @return $contrast-color-dark;
+  } @else {
+    @return $contrast-color-light;
+  }
+}

@@ -1,0 +1,194 @@
+@at-root {
+  @-ms-viewport {
+    width: device-width;
+  } // stylelint-disable-line at-rule-no-vendor-prefix
+}
+
+html {
+  box-sizing: border-box;
+  -ms-overflow-style: scrollbar;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+.container {
+  width: 100%;
+  max-width: 100%;
+  margin-right: auto;
+  margin-left: auto;
+  padding-right: $gutter;
+  padding-left: $gutter;
+}
+
+.container-fluid {
+  padding: 40px;
+  width: 100% !important;
+}
+
+.row {
+  display: flex;
+  flex-wrap: wrap;
+  margin-right: $gutter / -2;
+  margin-left: $gutter / -2;
+}
+
+@each $breakpoint-name, $breakpoint-size in $breakpoints {
+  @media (min-width: $breakpoint-size) {
+    $width: map-get($container-widths, $breakpoint-name);
+
+    @if $width {
+      .container {
+        width: $width;
+      }
+    }
+  }
+}
+
+@mixin make-col-std {
+  position: relative;
+
+  // Prevent columns from becoming too narrow when at smaller grid tiers by
+  // always setting `width: 100%;`. This works because we use `flex` values
+  // later on to override this initial width.
+  width: 100%;
+  min-height: 1px; // Prevent collapsing
+  padding-right: $gutter / 2;
+  padding-left: $gutter / 2;
+}
+
+@mixin make-col($size) {
+  display: block;
+  flex: 0 0 percentage($size / $columns);
+
+  // Add a `max-width` to ensure content within each column does not blow out
+  // the width of the column. Applies to IE10+ and Firefox. Chrome and Safari
+  // do not appear to require this.
+  max-width: percentage($size / $columns);
+}
+
+@each $breakpoint-name, $breakpoint-size in $breakpoints {
+  @for $i from 1 through $columns {
+    .col-#{$breakpoint-name}-#{$i} {
+      @include make-col-std;
+    }
+  }
+}
+
+@each $breakpoint-name, $breakpoint-size in $breakpoints {
+  @media (min-width: $breakpoint-size) {
+    .col-#{$breakpoint-name}-0 {
+      display: none;
+    }
+
+    @for $i from 1 through $columns {
+      .col-#{$breakpoint-name}-#{$i} {
+        @include make-col($i);
+      }
+    }
+  }
+}
+
+@each $breakpoint-name, $breakpoint-size in $breakpoints {
+  @media (min-width: $breakpoint-size) {
+    .hide-#{$breakpoint-name} {
+      display: none !important;
+    }
+
+    .show-#{$breakpoint-name} {
+      display: block !important;
+    }
+
+    .show-inline-block-#{$breakpoint-name} {
+      display: inline-block !important;
+    }
+
+    .show-flex-#{$breakpoint-name} {
+      display: flex !important;
+    }
+
+    .center-#{$breakpoint-name} {
+      text-align: center;
+    }
+
+    .left-#{$breakpoint-name} {
+      text-align: left;
+    }
+
+    .right-#{$breakpoint-name} {
+      text-align: right;
+    }
+  }
+}
+
+@each $breakpoint-name, $breakpoint-size in $breakpoints {
+  @for $i from 1 through $columns {
+    .no-gutters .col-#{$breakpoint-name}-#{$i} {
+      padding: 0;
+    }
+  }
+}
+
+.box {
+  font-size: 75%;
+  background-color: $gray-200;
+  padding: 1rem 0.2rem;
+  text-align: center;
+  margin-bottom: $gutter;
+}
+
+.slide {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  background-size: cover;
+  background-position: center center;
+}
+
+.slide-100 {
+  min-height: 100vh;
+
+  .container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+.slide-75 {
+  min-height: 75vh;
+
+  .container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+.slide-50 {
+  min-height: 50vh;
+
+  .container {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+  }
+}
+
+.slide-center {
+  text-align: center;
+}
+
+.slide-gray-100 {
+  background-color: $gray-100;
+}
+
+.slide-black {
+  background-color: $black;
+}
+
+.slide_p {
+  margin: 1.5em auto;
+
+  @include font-by-ratio(1);
+}
