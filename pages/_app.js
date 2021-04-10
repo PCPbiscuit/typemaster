@@ -1,15 +1,88 @@
 import { createGlobalStyle, ThemeProvider } from 'styled-components';
 import '../styles/main.scss';
 import Layout from '../components/Layout.jsx';
-import '../styles/fonts/barlow.scss';
 
 const GlobalStyle = createGlobalStyle`
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/barlow/barlow-black-webfont.woff2') format('woff2'),
+    url('/fonts/barlow/barlow-black-webfont.woff') format('woff');
+  font-weight: 900;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/barlow/barlow-bold-webfont.woff2') format('woff2'),
+    url('/fonts/barlow/barlow-bold-webfont.woff') format('woff');
+  font-weight: 700;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/barlow/barlow-extrabold-webfont.woff2') format('woff2'),
+    url('/fonts/barlow/barlow-extrabold-webfont.woff') format('woff');
+  font-weight: 800;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/barlow/barlow-extralight-webfont.woff2') format('woff2'),
+    url('/fonts/barlow/barlow-extralight-webfont.woff') format('woff');
+  font-weight: 200;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/barlow/barlow-light-webfont.woff2') format('woff2'),
+    url('/fonts/barlow/barlow-light-webfont.woff') format('woff');
+  font-weight: 300;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/barlow/barlow-medium-webfont.woff2') format('woff2'),
+    url('/fonts/barlow/barlow-medium-webfont.woff') format('woff');
+  font-weight: 500;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/barlow/barlow-regular-webfont.woff2') format('woff2'),
+    url('/fonts/barlow/barlow-regular-webfont.woff') format('woff');
+  font-weight: 400;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/barlow/barlow-semibold-webfont.woff2') format('woff2'),
+    url('/fonts/barlow/barlow-semibold-webfont.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+}
+
+@font-face {
+  font-family: 'Barlow';
+  src: url('/fonts/barlow/barlow-thin-webfont.woff2') format('woff2'),
+    url('/fonts/barlow/barlow-thin-webfont.woff') format('woff');
+  font-weight: 100;
+  font-style: normal;
+}
+
+
   body {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     color: #7b8bad;
-    font-family: 'Barlow' !important;
+    font-family: 'Barlow';
   }
   h1,
 h2,
