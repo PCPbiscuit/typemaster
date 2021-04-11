@@ -1,5 +1,7 @@
 import Head from 'next/head';
-import TmKeyboard from 'components/TmKeyboard.jsx';
+import TmKeyboard from 'components/TmKeyboard';
+import Mechanical from 'components/MechanicalKeyboard';
+import Features from 'components/Features';
 
 export default function Home() {
   return (
@@ -9,6 +11,8 @@ export default function Home() {
         <link rel="icon" href="/favicon.ico" />
       </Head>
       <TmKeyboard />
+      <Mechanical />
+      <Features />
     </>
   );
 }

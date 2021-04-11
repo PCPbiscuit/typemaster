@@ -5,6 +5,16 @@ import Button from 'components/Button.jsx';
 
 const StyledKeyboard = styled.div`
   margin-top: 83px;
+  position: relative;
+  span {
+    position: absolute;
+    top: 0;
+    right: 0;
+    height: 240px;
+    width: 122.5px;
+    background-color: ${({ theme }) => theme.colors.gray};
+    border-radius: 20px 0 0 20px;
+  }
 `;
 
 const Row = styled.div`
@@ -31,6 +41,16 @@ const PhotoBlock = styled.div`
   }
 `;
 
+const FlexRow = styled.div`
+  display: flex;
+  p {
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-left: 40px;
+    font-size: 16px;
+  }
+`;
+
 const TmKeyboard = () => {
   return (
     <StyledKeyboard>
@@ -42,7 +62,10 @@ const TmKeyboard = () => {
               Improve your productivity and gaming without breaking the bank.
               Upgrade to a high quality mechanical typing experience.
             </p>
-            <Button primary />
+            <FlexRow>
+              <Button primary />
+              <p>Release on 5/27</p>
+            </FlexRow>
           </TextBlock>
           <PhotoBlock>
             <Image
@@ -55,6 +78,7 @@ const TmKeyboard = () => {
           </PhotoBlock>
         </Row>
       </Container>
+      <span />
     </StyledKeyboard>
   );
 };

@@ -6,8 +6,8 @@ const StyledContainer = styled.div`
   width: 100%;
   margin-right: auto;
   margin-left: auto;
-  padding-right: 1.5rem;
-  padding-left: 1.5rem;
+  /* padding-right: 1.5rem;
+  padding-left: 1.5rem; */
   @media (min-width: 768px) {
     width: 890px;
   }
