@@ -74,7 +74,7 @@ const Features = () => {
           {arr.map((k, i) => {
             const DynamicComponent = dynamic(() => import(`./icons/${k.icon}`));
             return (
-              <StyledFeature>
+              <StyledFeature key={i}>
                 <Icon>
                   <DynamicComponent />
                 </Icon>
